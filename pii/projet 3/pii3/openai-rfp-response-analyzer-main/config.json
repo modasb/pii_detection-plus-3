@@ -1,0 +1,80 @@
+{
+    "verbose": true,
+    "use_auto_language": true,
+    "max_workers": 4,
+    "output": {
+        "save_json": true,
+        "save_csv": true,
+        "save_metrics": true,
+        "output_dir": "~/Desktop"
+    },
+    "metrics": {
+        "confidence_threshold": 0.5,
+        "overlap_threshold": 0.5,
+        "calculate_per_type": true,
+        "include_confusion_matrix": true
+    },
+    "validation": {
+        "strict_mode": true,
+        "validate_boundaries": true,
+        "check_context": true
+    },
+    "entity_types": {
+        "CREDIT_CARD": {
+            "min_confidence": 0.8,
+            "require_checksum": true,
+            "context_boost": 0.1
+        },
+        "CRYPTO_WALLET": {
+            "min_confidence": 0.9,
+            "validate_format": true,
+            "context_boost": 0.1
+        },
+        "VAT_NUMBER": {
+            "min_confidence": 0.85,
+            "country_specific_validation": true,
+            "context_boost": 0.1
+        },
+        "BANK_ACCOUNT": {
+            "min_confidence": 0.85,
+            "validate_format": true,
+            "context_boost": 0.1
+        },
+        "CODE_IDENTIFIER": {
+            "min_confidence": 0.7,
+            "max_length": 50,
+            "context_boost": 0.05
+        }
+    },
+    "patterns": {
+        "CREDIT_CARD": [
+            "\\b(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\\d{3})\\d{11})\\b"
+        ],
+        "VAT_NUMBER": {
+            "FR": "\\bFR[0-9A-Z]{2}[0-9]{9}\\b",
+            "GB": "\\bGB[0-9]{9}\\b",
+            "DE": "\\bDE[0-9]{9}\\b"
+        },
+        "CODE_IDENTIFIER": [
+            "\\b(?:function|class|var|let|const)\\s*\\w+\\b",
+            "\\b[A-Za-z_]\\w*\\([^)]*\\)\\b"
+        ]
+    },
+    "context_words": {
+        "CREDIT_CARD": {
+            "en": ["card", "credit", "visa", "mastercard", "amex"],
+            "fr": ["carte", "crédit", "bancaire"],
+            "ar": ["بطاقة", "ائتمان", "فيزا"]
+        },
+        "VAT_NUMBER": {
+            "en": ["vat", "tax", "registration"],
+            "fr": ["tva", "taxe", "numéro fiscal"],
+            "ar": ["ضريبة", "قيمة مضافة", "تسجيل ضريبي"]
+        }
+    },
+    "logging": {
+        "level": "INFO",
+        "file": "pii_detection.log",
+        "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    }
+} 

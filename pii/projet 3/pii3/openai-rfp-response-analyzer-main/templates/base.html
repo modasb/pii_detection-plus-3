@@ -1,0 +1,45 @@
+{% block extra_js %}{% endblock %}
+<script src="{% static 'js/pii_analysis.js' %}"></script>
+<script>
+function fileUpload() {
+    return {
+        activeTab: 'report',
+        isMobileMenuOpen: false,
+        isDragging: false,
+        rfpFileName: 'No file chosen',
+        responseFileName: 'No file chosen',
+        // ... handlers
+        handleFileSelect(event, type) {
+            const file = event.target.files[0];
+            if (file) {
+                if (type === 'rfp') {
+                    this.rfpFileName = file.name;
+                } else {
+                    this.responseFileName = file.name;
+                }
+            }
+        },
+        handleDrop(event, type) {
+            this.isDragging = false;
+            const file = event.dataTransfer.files[0];
+            if (file) {
+                const input = this.$refs[type === 'rfp' ? 'rfpFile' : 'responseFile'];
+                input.files = event.dataTransfer.files;
+                if (type === 'rfp') {
+                    this.rfpFileName = file.name;
+                } else {
+                    this.responseFileName = file.name;
+                }
+            }
+        }
+    }
+}
+</script>
+</body>
+
+<div class="upload-area"
+    @dragover.prevent="isDragging = true"
+    @dragleave.prevent="isDragging = false"
+    @drop.prevent="handleDrop($event, 'rfp')"
+    :class="{ 'dragover': isDragging }">
+</div> 

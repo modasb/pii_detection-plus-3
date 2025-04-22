@@ -1,0 +1,24 @@
+# API Framework
+fastapi>=0.104.1
+uvicorn>=0.24.0
+pydantic>=2.7.4,<3.0.0  # Updated for compatibility with langchain
+python-multipart==0.0.6
+
+# Core Dependencies
+langdetect==1.0.9
+numpy>=1.26.0  # For Python 3.12 compatibility
+regex>=2023.10.3
+
+# Utilities
+python-dotenv>=1.0.0
+tqdm>=4.66.1
+
+# Testing and Development
+pytest>=7.4.3
+pytest-asyncio>=0.21.1
+httpx>=0.25.1
+
+# Production Dependencies
+gunicorn>=21.2.0
+uvicorn[standard]>=0.24.0
+python-json-logger>=2.0.7 
