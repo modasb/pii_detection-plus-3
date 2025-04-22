@@ -1,0 +1,77 @@
+{
+  "total_texts_processed": 126,
+  "avg_processing_time": 0.5520833144112239,
+  "entity_types_found": {
+    "PER": 1166,
+    "IN_PAN": 1520,
+    "ORG": 254,
+    "DATE_TIME": 170,
+    "EMAIL_ADDRESS": 80,
+    "MISC": 606,
+    "LOC": 227,
+    "AR_EMAIL": 14,
+    "PHONE_NUMBER": 32,
+    "LOCATION": 50,
+    "AR_POSTAL_CODE": 4,
+    "URL": 23,
+    "PERSON": 13,
+    "NRP": 4,
+    "phone": 4
+  },
+  "entities_by_language": {
+    "en": {
+      "PER": 592,
+      "IN_PAN": 880,
+      "ORG": 124,
+      "DATE_TIME": 100,
+      "EMAIL_ADDRESS": 52,
+      "PHONE_NUMBER": 17,
+      "LOCATION": 28,
+      "MISC": 85,
+      "URL": 14,
+      "PERSON": 7,
+      "LOC": 85,
+      "NRP": 2,
+      "phone": 2
+    },
+    "fr": {
+      "PER": 311,
+      "MISC": 478,
+      "IN_PAN": 242,
+      "ORG": 82,
+      "LOC": 101,
+      "DATE_TIME": 27,
+      "EMAIL_ADDRESS": 18,
+      "PHONE_NUMBER": 7,
+      "LOCATION": 9,
+      "PERSON": 3,
+      "URL": 3,
+      "NRP": 1,
+      "phone": 1
+    },
+    "ar": {
+      "PER": 263,
+      "IN_PAN": 398,
+      "ORG": 48,
+      "DATE_TIME": 43,
+      "AR_EMAIL": 14,
+      "PHONE_NUMBER": 8,
+      "LOCATION": 13,
+      "MISC": 43,
+      "AR_POSTAL_CODE": 4,
+      "URL": 6,
+      "PERSON": 3,
+      "LOC": 41,
+      "NRP": 1,
+      "EMAIL_ADDRESS": 10,
+      "phone": 1
+    }
+  },
+  "detection_methods": {
+    "huggingface": 1492,
+    "presidio": 1892,
+    "spacy": 761,
+    "arabic_regex": 18,
+    "regex": 4
+  }
+}

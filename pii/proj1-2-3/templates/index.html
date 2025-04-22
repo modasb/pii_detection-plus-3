@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PII Protection Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .highlight {
+            background-color: #ffcccc;
+            padding: 2px;
+            border-radius: 3px;
+        }
+        .language-selector {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>PII Protection Demo</h1>
+        <p class="lead">Enter text containing personal information to see how it's detected and redacted.</p>
+        
+        <div class="language-selector">
+            <label for="language" class="form-label">Select Language:</label>
+            <select id="language" class="form-select">
+                <option value="en">English</option>
+                <option value="fr">French</option>
+                <option value="ar">Arabic</option>
+            </select>
+        </div>
+        
+        <div class="mb-3">
+            <label for="inputText" class="form-label">Input Text:</label>
+            <textarea id="inputText" class="form-control" rows="5" placeholder="Enter text containing PII..."></textarea>
+        </div>
+        
+        <button id="processBtn" class="btn btn-primary mb-4">Process Text</button>
+        
+        <div id="results" class="d-none">
+            <h3>Results</h3>
+            
+            <div class="card mb-3">
+                <div class="card-header">Redacted Text</div>
+                <div class="card-body">
+                    <p id="redactedText"></p>
+                </div>
+            </div>
+            
+            <div class="card mb-3">
+                <div class="card-header">Detected Entities</div>
+                <div class="card-body">
+                    <ul id="entityList" class="list-group"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('processBtn').addEventListener('click', async () => {
+            const text = document.getElementById('inputText').value;
+            const language = document.getElementById('language').value;
+            
+            if (!text) {
+                alert('Please enter some text');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/detect-pii/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ text, language }),
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Display results
+                    document.getElementById('redactedText').textContent = data.redacted_text;
+                    
+                    const entityList = document.getElementById('entityList');
+                    entityList.innerHTML = '';
+                    
+                    data.entities.forEach(entity => {
+                        const li = document.createElement('li');
+                        li.className = 'list-group-item';
+                        li.innerHTML = `<strong>${entity.type}</strong>: "${entity.text}" (detected by ${entity.method})`;
+                        entityList.appendChild(li);
+                    });
+                    
+                    document.getElementById('results').classList.remove('d-none');
+                } else {
+                    alert(`Error: ${data.error}`);
+                }
+            } catch (error) {
+                alert(`Error: ${error.message}`);
+            }
+        });
+    </script>
+</body>
+</html> 

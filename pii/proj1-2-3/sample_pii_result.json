@@ -1,0 +1,105 @@
+{
+  "original_text": "My name is John Smith and I work at Microsoft Corporation.\n        You can reach me at john.smith@microsoft.com or call 555-123-4567.\n        My credit card number is 4111-1111-1111-1111 and my SSN is 123-45-6789.\n        I live at 123 Main Street, New York, NY 10001.",
+  "masked_text": "My name is [PERSON] and I work at [ORGANIZATION].\n        You can reach me at jo***@microsoft.com or call 555-********.\n        My credit card number is 4111********1111 and my SSN is [REDACTED].\n        I live at 123 [LOCATION], [LOCATION], [LOCATION] 10001.",
+  "detected_entities": [
+    {
+      "type": "LOCATION",
+      "text": "NY",
+      "start": 259,
+      "end": 261,
+      "score": 0.9889917373657227,
+      "method": "huggingface_en"
+    },
+    {
+      "type": "LOCATION",
+      "text": "New York",
+      "start": 249,
+      "end": 257,
+      "score": 0.9976916909217834,
+      "method": "huggingface_en"
+    },
+    {
+      "type": "LOCATION",
+      "text": "Main Street",
+      "start": 236,
+      "end": 247,
+      "score": 0.9779189825057983,
+      "method": "huggingface_en"
+    },
+    {
+      "type": "US_SSN",
+      "text": "123-45-6789",
+      "start": 201,
+      "end": 212,
+      "score": 1.0,
+      "method": "regex"
+    },
+    {
+      "type": "CREDIT_CARD",
+      "text": "4111-1111-1111-1111",
+      "start": 167,
+      "end": 186,
+      "score": 1.0,
+      "method": "regex"
+    },
+    {
+      "type": "PHONE_NUMBER",
+      "text": "555-123-4567",
+      "start": 120,
+      "end": 132,
+      "score": 1.0,
+      "method": "regex"
+    },
+    {
+      "type": "EMAIL",
+      "text": "john.smith@microsoft.com",
+      "start": 87,
+      "end": 111,
+      "score": 1.0,
+      "method": "regex"
+    },
+    {
+      "type": "ORGANIZATION",
+      "text": "Microsoft Corporation",
+      "start": 36,
+      "end": 57,
+      "score": 0.9992265701293945,
+      "method": "huggingface_en"
+    },
+    {
+      "type": "PERSON",
+      "text": "John Smith",
+      "start": 11,
+      "end": 21,
+      "score": 0.9987539052963257,
+      "method": "huggingface_en"
+    }
+  ],
+  "statistics": {
+    "total_entities": 9,
+    "entity_types": {
+      "LOCATION_huggingface_en": 3,
+      "US_SSN_regex": 1,
+      "CREDIT_CARD_regex": 1,
+      "PHONE_NUMBER_regex": 1,
+      "EMAIL_regex": 1,
+      "ORGANIZATION_huggingface_en": 1,
+      "PERSON_huggingface_en": 1
+    },
+    "unique_types": [
+      "CREDIT_CARD",
+      "US_SSN",
+      "EMAIL",
+      "PHONE_NUMBER",
+      "ORGANIZATION",
+      "LOCATION",
+      "PERSON"
+    ],
+    "detection_methods": [
+      "huggingface_en",
+      "regex"
+    ]
+  },
+  "language": "en",
+  "success": true
+}

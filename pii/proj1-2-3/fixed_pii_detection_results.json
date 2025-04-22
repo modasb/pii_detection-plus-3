@@ -1,0 +1,148 @@
+{
+    "en": {
+        "original_text": "John Doe lives in New York and his email is john.doe@example.com.",
+        "redacted_text": "[PERSON] lives in [GPE] and his email is [EMAIL]",
+        "detected_entities": [
+            {
+                "text": "John Doe",
+                "type": "PERSON",
+                "score": 0.8,
+                "method": "spacy",
+                "start": 0,
+                "end": 8
+            },
+            {
+                "text": "New York",
+                "type": "GPE",
+                "score": 0.8,
+                "method": "spacy",
+                "start": 18,
+                "end": 26
+            },
+            {
+                "text": "john.doe@example.com.",
+                "type": "EMAIL",
+                "score": 1.0,
+                "method": "regex",
+                "start": 44,
+                "end": 65
+            }
+        ],
+        "language": "en",
+        "statistics": {
+            "processing_time": 0.3450009822845459,
+            "entity_count": 3,
+            "methods_used": [
+                "spacy",
+                "regex"
+            ],
+            "method_stats": {
+                "regex": {
+                    "total": 1,
+                    "filtered": 1,
+                    "types": [
+                        "EMAIL"
+                    ]
+                },
+                "spacy": {
+                    "total": 2,
+                    "filtered": 2,
+                    "types": [
+                        "GPE",
+                        "PERSON"
+                    ]
+                }
+            }
+        },
+        "success": true
+    },
+    "fr": {
+        "original_text": "Jean Dupont habite à Paris et son email est jean.dupont@email.fr.",
+        "redacted_text": "[PER] habite à [LOC] et son email est [EMAIL]",
+        "detected_entities": [
+            {
+                "text": "Jean Dupont",
+                "type": "PER",
+                "score": 0.8,
+                "method": "spacy",
+                "start": 0,
+                "end": 11
+            },
+            {
+                "text": "Paris",
+                "type": "LOC",
+                "score": 0.8,
+                "method": "spacy",
+                "start": 21,
+                "end": 26
+            },
+            {
+                "text": "jean.dupont@email.fr.",
+                "type": "EMAIL",
+                "score": 1.0,
+                "method": "regex",
+                "start": 44,
+                "end": 65
+            }
+        ],
+        "language": "fr",
+        "statistics": {
+            "processing_time": 0.12153744697570801,
+            "entity_count": 3,
+            "methods_used": [
+                "spacy",
+                "regex"
+            ],
+            "method_stats": {
+                "regex": {
+                    "total": 1,
+                    "filtered": 1,
+                    "types": [
+                        "EMAIL"
+                    ]
+                },
+                "spacy": {
+                    "total": 2,
+                    "filtered": 2,
+                    "types": [
+                        "LOC",
+                        "PER"
+                    ]
+                }
+            }
+        },
+        "success": true
+    },
+    "ar": {
+        "original_text": "محمد العتيبي يسكن في الرياض ورقم هاتفه 966501234567 والبريد الإلكتروني mohamed.alotaibi@email.com.",
+        "redacted_text": "محمد العتيبي يسكن في الرياض ورقم هاتفه [AR_BANK_ACCOUNT] والبريد الإلكتروني mohamed.alotaibi@email.com.",
+        "detected_entities": [
+            {
+                "text": "966501234567",
+                "type": "AR_BANK_ACCOUNT",
+                "score": 0.8,
+                "method": "financial_regex",
+                "start": 39,
+                "end": 51
+            }
+        ],
+        "language": "ar",
+        "statistics": {
+            "processing_time": 0.12965083122253418,
+            "entity_count": 1,
+            "methods_used": [
+                "financial"
+            ],
+            "method_stats": {
+                "financial": {
+                    "total": 1,
+                    "filtered": 1,
+                    "types": [
+                        "AR_BANK_ACCOUNT"
+                    ]
+                }
+            }
+        },
+        "success": true
+    }
+}

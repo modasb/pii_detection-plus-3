@@ -1,0 +1,4 @@
+Language,Original Text,Redacted Text,Entities Found,Processing Time
+en,John Doe lives in New York and his email is john.doe@example.com.,[PERSON] lives in [GPE] and his email is [EMAIL],3,0.3450009822845459
+fr,Jean Dupont habite à Paris et son email est jean.dupont@email.fr.,[PER] habite à [LOC] et son email est [EMAIL],3,0.12153744697570801
+ar,محمد العتيبي يسكن في الرياض ورقم هاتفه 966501234567 والبريد الإلكتروني mohamed.alotaibi@email.com.,محمد العتيبي يسكن في الرياض ورقم هاتفه [AR_BANK_ACCOUNT] والبريد الإلكتروني mohamed.alotaibi@email.com.,1,0.12965083122253418
